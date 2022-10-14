@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+}
+.ex-box {
+border: 2px solid black;
+border-radius: 0.35em;
+text-align: center;
+margin: 10px 100px;
+}
+.list {
+border: 2px solid darkblue;
+border-radius: 0.35em;
+text-align: center;
+margin: 10px 100px;
+}
+.list h2, .list p {
+color: darkblue;
+}
+
+#add-btn {
+background-color: lightskyblue;
+border-color: lightblue;
+border-radius: 0.35em;
+}
