@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+    background: linear-gradient(rgb(247, 231, 241), rgb(252, 205, 232), rgb(248, 184, 240));
 }
 .ex-box {
 border: 2px solid black;
@@ -9,17 +9,17 @@ text-align: center;
 margin: 10px 100px;
 }
 .list {
-border: 2px solid darkblue;
+border: 2px solid lightcoral;
 border-radius: 0.35em;
 text-align: center;
 margin: 10px 100px;
 }
 .list h2, .list p {
-color: darkblue;
+color: black;
 }
 
 #add-btn {
-background-color: lightskyblue;
-border-color: lightblue;
+background-color: rgb(240, 209, 214);
+border-color: lightcoral;
 border-radius: 0.35em;
 }

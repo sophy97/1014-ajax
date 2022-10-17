@@ -19,29 +19,20 @@
     <script>
         /*
         식당이름(RSTR_NM), 메뉴분류(MENU_CTGRY_LCLAS_NM) - 메뉴명(MENU_NM)
-        순으로 박스안에 리스트 클래스 생성해 출력해야 한다
+        순으로 박스안에 리스트 클래스 생성해 출력하기
         */
         
-        // json data promise객체 들어오는지 콘솔에서 확인
+        // json data 들어오는지 콘솔에서 확인 (promise객체 )
         console.log(fetch('./data.json'));
 
-        // then대신 Async, await로 fetchAPI를 통해 ajax사용
+        // then대신 Async await로 fetchAPI를 통해 ajax사용
         // response 객체에 json data를 가져온다 
-        async function getDataFetch(nextCount) {
-            const response = await fetch('./data.json');
-            let data = 0;
-            if (response.ok) {
-                data = await response.json();
-                console.log(data);
-                /*
-                출력할 내용 콘솔확인
-                console.log(data.body[0].RSTR_NM);
-                console.log(data.body[0].MENU_CTGRY_LCLAS_NM);
-                console.log(data.body[0].MENU_NM);
-                */ 
-            }
+        async function getDataFetch(count) {
+            const response = await fetch('./data.json', { method : "GET" });
+            const data = await response.json();
+            // 출력내용 콘솔 확인 console.log(data); 
 
-            // 각 출력내용을 지정한다
+            // 각 출력내용을 지정
             // API로 가져올수 없으므로 임의의 값을 변수에 넣어 작성
             const rstrName = data.body[0].RSTR_NM;
             const menuCar = data.body[0].MENU_CTGRY_LCLAS_NM;
@@ -56,16 +47,12 @@
             const menuBox = document.createElement("div");
             menuBox.append(rstrNameTag);
             menuBox.append(menuCarTag);
-            menuBox.classList.add("list");
+            
             document.querySelector("body").append(menuBox);
+            menuBox.classList.add("list");
         }
 
-        for(let i=nextCount; i<nextCount+5; i++) {
-            let count = 0;
-            for(let j=i; j<1000; j++) {
-                    count = j;
-                    break;
-            }
+        for(let i=0; i<5; i++) {
             menuLists(data.body[i].RSTR_NM,
                 data.body[i].MENU_CTGRY_LCLAS_NM,
                 data.body[i].MENU_NM);
@@ -74,12 +61,12 @@
     // 함수실행
     getDataFetch(0);
 
-        // 버튼에 이벤트
-        let nextCount = 0;
+        // 버튼에 이벤트 -함수밖에서 선언해야 
+        let count = 0;
         const button = document.querySelector("#add-btn");
         button.addEventListener("click", ()=> {
-            nextCount += 5;
-            getDataFetch(nextCount);
+            count += 5;
+            getDataFetch(count);
         });
 
     </script>
